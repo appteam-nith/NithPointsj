@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+# Check if the jar has been built.
+if [ ! -e target/NithPointsj-tools-*.jar ] || [[ "$ALWAYS_BUILD_WALLETTOOL" != "" ]]; then
+  echo "Compiling WalletTool to a JAR"
+  cd ../core
+  mvn install -DskipTests
+  cd ../tools
+  [ -e target/NithPointsj-tools-*.jar ] && rm target/NithPointsj-tools-*.jar
+  mvn package -DskipTests
+fi
+
+java -Xmx4g -server -jar target/NithPointsj-tools-*.jar $*
