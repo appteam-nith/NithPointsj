@@ -1,1 +1,13 @@
 Use maven to build
+
+#Building instructions
+cd <dir. of project> in cmd
+
+drage "mvn.bat" (it is maven) to cmd 
+
+use command "clean install -Dmaven.test.skip=true"
+it get built.
+
+#Android integrations
+
+use this as library in dependency
